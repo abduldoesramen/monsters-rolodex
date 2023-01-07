@@ -24,7 +24,10 @@ class App extends Component {
           </p>
           <button
             onClick={() => {
-              this.setState({ name: "Andrei" });
+              // Shallow merge (use same types!)
+              this.setState({
+                name: { firstName: "Andrei", lastName: "Neaogie" },
+              });
               console.log(this.state);
             }}
           >
