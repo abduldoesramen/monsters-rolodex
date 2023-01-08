@@ -24,11 +24,17 @@ class App extends Component {
           </p>
           <button
             onClick={() => {
-              // Shallow merge (use same types!)
-              this.setState({
-                name: { firstName: "Andrei", lastName: "Neaogie" },
-              });
-              console.log(this.state);
+              this.setState(
+                // Within this function, we have access to state and props
+                (state, props) => {
+                  return {
+                    // Shallow merge (use same types!)
+                    name: { firstName: "Andrei", lastName: "Neaogies" },
+                  };
+                },
+                () => {}
+              );
+              // console.log(this.state);
             }}
           >
             Change Name
