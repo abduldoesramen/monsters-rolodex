@@ -32,7 +32,7 @@ class App extends Component {
                     name: { firstName: "Andrei", lastName: "Neaogies" },
                   };
                 },
-                // Second argument (callback)
+                // Second argument (callback) runs ONLY AFTER the state is updated.
                 () => {
                   console.log(this.state);
                 }
