@@ -26,13 +26,16 @@ class App extends Component {
             onClick={() => {
               this.setState(
                 // Within this function, we have access to state and props
-                (state, props) => {
+                () => {
                   return {
                     // Shallow merge (use same types!)
                     name: { firstName: "Andrei", lastName: "Neaogies" },
                   };
                 },
-                () => {}
+                // Second argument (callback)
+                () => {
+                  console.log(this.state);
+                }
               );
               // console.log(this.state);
             }}
