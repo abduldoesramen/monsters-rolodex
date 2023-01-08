@@ -8,41 +8,24 @@ class App extends Component {
     super();
 
     this.state = {
-      name: { firstName: "Yihua", lastName: "Zhang" },
-      company: "ZTM",
+      monster1: {
+        name: "Linda",
+      },
+      monster2: {
+        name: "Frank",
+      },
+      monster3: {
+        name: "Jacky",
+      },
     };
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hi {this.state.name.firstName} {this.state.name.lastName}, I work at{" "}
-            {this.state.company}
-          </p>
-          <button
-            onClick={() => {
-              this.setState(
-                // Within this function, we have access to state and props
-                () => {
-                  return {
-                    // Shallow merge (use same types!)
-                    name: { firstName: "Andrei", lastName: "Neaogies" },
-                  };
-                },
-                // Second argument (callback) runs ONLY AFTER the state is updated.
-                () => {
-                  console.log(this.state);
-                }
-              );
-              // console.log(this.state);
-            }}
-          >
-            Change Name
-          </button>
-        </header>
+        <h1>{this.state.monster1.name}</h1>
+        <h1>{this.state.monster2.name}</h1>
+        <h1>{this.state.monster3.name}</h1>
       </div>
     );
   }
