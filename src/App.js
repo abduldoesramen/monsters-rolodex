@@ -8,25 +8,24 @@ class App extends Component {
     super();
 
     this.state = {
-      monsters: [
-        {
-          name: "Linda",
-          id: "123a",
-        },
-        {
-          name: "Frank",
-          id: "123b",
-        },
-        {
-          name: "Jacky",
-          id: "123c",
-        },
-        {
-          name: "Andrei",
-          id: "123d",
-        },
-      ],
+      monsters: [],
     };
+  }
+
+  // Lifecycle method when React renders a component FIRST.
+  componentDidMount() {
+    fetch("http://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((users) =>
+        this.setState(
+          () => {
+            return { monsters: users };
+          },
+          () => {
+            console.log(this.state);
+          }
+        )
+      );
   }
 
   render() {
