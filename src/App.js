@@ -12,23 +12,16 @@ class App extends Component {
       monsters: [],
       searchField: "",
     };
-    console.log("constructor");
   }
 
   // 3. Lifecycle method when React renders a component FIRST.
   componentDidMount() {
-    console.log("componentDidMount");
     fetch("http://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((users) =>
-        this.setState(
-          () => {
-            return { monsters: users };
-          },
-          () => {
-            console.log(this.state);
-          }
-        )
+        this.setState(() => {
+          return { monsters: users };
+        })
       );
   }
 
@@ -41,8 +34,6 @@ class App extends Component {
 
   // 2. Determines what to show (Initial UI)
   render() {
-    console.log("render");
-
     const { monsters, searchField } = this.state;
     const { onSearchChange } = this;
 
@@ -58,14 +49,7 @@ class App extends Component {
           placeholder="search monster"
           onChange={onSearchChange}
         />
-        {/* {filteredMonsters.map((monster) => {
-          return (
-            <div key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })} */}
-        <CardList />
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }
